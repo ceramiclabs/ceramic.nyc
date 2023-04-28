@@ -150,13 +150,14 @@ footer {
   animation: fadein-08 3s forwards 3s;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px),
+@media (min-width: 481px) and (max-width: 767px) {
   .speech h2 {
     font-size: 5rem;
   }
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px){
   .speech h2 {
     font-size: 10rem;
   }
