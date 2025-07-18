@@ -112,6 +112,11 @@ body {
   color: white;
 }
 
+header {
+  z-index: 101;
+  position: relative;
+}
+
 *,
 *:before,
 *:after {
@@ -132,18 +137,21 @@ body {
 }
 
 .scroll-section {
-  scroll-snap-align: center;
+  scroll-snap-align: top;
   scroll-snap-stop: always;
   position: relative;
   height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.parallax-bg {
+/* .parallax-bg {
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
+} */
 
 .noise-wrapper {
   position: absolute;
@@ -185,14 +193,13 @@ body {
 
 .speech {
   position: relative;
-  z-index: 8;
+  z-index: 10;
 }
 
 .speech h2 {
   line-height: 0.75em;
   letter-spacing: -0.3rem;
-
-  /* animation: fadein-08 2s forwards 1s; */
+  transition: all 0.2s ease-in-out;
 }
 
 .speech h2 span {
@@ -216,3 +223,20 @@ body {
   color: var(--color-light-blue);
 }
 
+.smaller {
+  font-size: 0.2em;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+footer div {
+  font-size: 10px;
+}
