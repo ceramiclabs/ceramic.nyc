@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 372.11 133.5">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        font-family: EncodeSansCondensed-SemiBold, 'Encode Sans Condensed';
+        font-size: 120px;
+        font-weight: 600;
+      }
+
+      .cls-2 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-3 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-4 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-5 {
+        letter-spacing: 0em;
+      }
+    </style>
+  </defs>
+  <text class="cls-1" transform="translate(0 104.4)"><tspan class="cls-3" x="0" y="0">C</tspan><tspan class="cls-4" x="59.88" y="0">e</tspan><tspan class="cls-2" x="114.48" y="0">r</tspan><tspan class="cls-5" x="152.4" y="0">amic</tspan></text>
+</svg>
