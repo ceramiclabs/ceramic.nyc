@@ -2,22 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@theme {
-  --font-sans: "Roboto", Helvetica, sans-serif;
-  --font-display: "Encode Sans Condensed", sans-serif;
-
-  --animate-fadein: fadein 800ms forwards 600ms 1;
-
-  @keyframes fadein {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-}
-
 :root {
   --color-blue-black: #0d1212;
   --color-light-blue: #add8e6;
@@ -35,6 +19,26 @@
   --container-width: calc(100% - (var(--gutter-sm) * 2));
   --max-width: calc(var(--screen-xl-min) - (var(--gutter) * 2));
   --gutter-auto: calc((100vw - var(--max-width)) / 2);
+}
+
+@theme {
+  --font-sans: "Roboto", Helvetica, sans-serif;
+  --font-display: "Encode Sans Condensed", sans-serif;
+
+  --animate-fadein: fadein 800ms forwards 600ms 1;
+
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  --color-blue-black: var(--color-blue-black);
+  --color-light-blue: var(--color-light-blue);
+  --color-grey-300: var(--color-grey-300);
 }
 
 @keyframes fade-in {
