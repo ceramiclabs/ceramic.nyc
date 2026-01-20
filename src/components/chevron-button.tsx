@@ -30,9 +30,6 @@ export function ChevronButton() {
       window.scrollTo({ top: 0, behavior: "smooth" })
     } else {
       // Find current section and scroll to next
-      const scrollY = window.scrollY
-      const viewportHeight = window.innerHeight
-
       for (const id of SECTION_IDS) {
         const section = document.getElementById(id)
         if (section) {
