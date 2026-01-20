@@ -49,3 +49,15 @@ This is a modern frontend website built with Vite and Tailwind CSS. The project 
 - Uses Prettier with semicolons disabled
 - ES modules (type: "module" in package.json)
 - Modern CSS with custom properties and CSS Grid/Flexbox
+- **React imports**: Only import React when using React APIs (e.g., `React.ReactNode`, `React.Children`)
+- **Tailwind className formatting**:
+  - Keep className lines under 100 characters
+  - Use `clsx` (imported as `cx`) to break long className strings into multiple lines
+  - Organize classes mobile-first: baseline/mobile classes on first line, responsive variants (`lg:*`, `xl:*`) on subsequent lines
+  - Example:
+    ```tsx
+    className={cx(
+      "relative z-10 mx-auto max-w-[80%] flex flex-col",
+      "lg:flex-row lg:items-center lg:gap-16 xl:gap-24"
+    )}
+    ```
