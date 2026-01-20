@@ -1,6 +1,7 @@
 import { CaseStudySection } from "./case-study-section"
 import { Blurb, Blurbs, Standfirst } from "./blurbs"
 import { Subtitle, Title } from "./title"
+import rendevuBackground from "../assets/rendevu-card-design.png"
 
 const HIGHLIGHT_COLOR = "#ef5da8"
 
@@ -8,7 +9,7 @@ export function RendevuCaseStudy() {
   return (
     <CaseStudySection
       id="rendevu"
-      backgroundImage="./assets/rendevu-card-design.png"
+      backgroundImage={rendevuBackground}
       title={
         <Title style={{ color: HIGHLIGHT_COLOR }}>
           <span>Rendevu</span>

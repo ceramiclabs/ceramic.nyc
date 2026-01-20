@@ -1,6 +1,7 @@
 import { CaseStudySection } from "./case-study-section"
 import { Blurb, Blurbs, Standfirst } from "./blurbs"
 import { Subtitle, Title } from "./title"
+import arenaBackground from "../assets/arena-kareem-game-play.png"
 
 const HIGHLIGHT_COLOR = "#ddff0e"
 
@@ -8,7 +9,7 @@ export function ArenaCaseStudy() {
   return (
     <CaseStudySection
       id="arena"
-      backgroundImage="./assets/arena-kareem-game-play.png"
+      backgroundImage={arenaBackground}
       title={
         <Title style={{ color: HIGHLIGHT_COLOR }}>
           <span>Arena</span>
