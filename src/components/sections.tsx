@@ -46,8 +46,8 @@ export function ProductSection() {
           impact.
         </Standfirst>
         <Blurb title="Skip the hype" className="lg:!max-w-[350px]">
-          Old-school craft. New-school tools. We marry traditional engineering
-          rigor with AI-native thinking.
+          Old-school craft. New-school tools. We fuse traditional engineering
+          rigor with AI-powered execution.
         </Blurb>
         <Blurb title="Unapologetically human">
           Technology serves people. We design systems and experiences that
