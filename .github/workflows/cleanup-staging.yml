@@ -1,0 +1,146 @@
+name: Cleanup Staging Deployments
+
+on:
+  # Clean up when staging branches are deleted
+  delete:
+
+  # Run daily at midnight UTC to clean up stale deployments
+  schedule:
+    - cron: "0 0 * * *"
+
+  workflow_dispatch:
+    inputs:
+      retention_days:
+        description: "Days to retain deployments (default: 7)"
+        required: false
+        default: "7"
+
+jobs:
+  # Triggered when a staging branch is deleted
+  cleanup-deleted-branch:
+    if: github.event_name == 'delete' && startsWith(github.event.ref, 'staging/')
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout staging branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages-staging
+          fetch-depth: 0
+
+      - name: Extract branch name
+        id: branch
+        run: |
+          # Get branch name without 'staging/' prefix
+          BRANCH_NAME="${{ github.event.ref }}"
+          BRANCH_NAME="${BRANCH_NAME#staging/}"
+          # Sanitize for use in URLs
+          SAFE_NAME=$(echo "$BRANCH_NAME" | sed 's/[^a-zA-Z0-9]/-/g' | tr '[:upper:]' '[:lower:]')
+          echo "name=$SAFE_NAME" >> $GITHUB_OUTPUT
+          echo "Cleaning up staging branch: $SAFE_NAME"
+
+      - name: Remove deployment directory
+        run: |
+          DEPLOY_DIR="${{ steps.branch.outputs.name }}"
+          if [ -d "$DEPLOY_DIR" ]; then
+            rm -rf "$DEPLOY_DIR"
+            echo "Removed deployment: $DEPLOY_DIR"
+          else
+            echo "Deployment directory not found: $DEPLOY_DIR"
+          fi
+
+          # Also remove timestamp
+          TIMESTAMP_FILE=".timestamps/${{ steps.branch.outputs.name }}"
+          if [ -f "$TIMESTAMP_FILE" ]; then
+            rm -f "$TIMESTAMP_FILE"
+            echo "Removed timestamp: $TIMESTAMP_FILE"
+          fi
+
+      - name: Commit and push cleanup
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "Cleanup staging: ${{ steps.branch.outputs.name }}"
+          git push origin gh-pages-staging
+
+  # Scheduled cleanup of stale deployments
+  cleanup-stale-deployments:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout staging branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages-staging
+          fetch-depth: 0
+        continue-on-error: true
+        id: checkout
+
+      - name: Check if staging branch exists
+        if: steps.checkout.outcome == 'failure'
+        run: |
+          echo "No gh-pages-staging branch exists yet. Nothing to clean up."
+          exit 0
+
+      - name: Set retention days
+        id: retention
+        run: |
+          DAYS="${{ github.event.inputs.retention_days || '7' }}"
+          echo "days=$DAYS" >> $GITHUB_OUTPUT
+          echo "Retention period: $DAYS days"
+
+      - name: Find and remove stale deployments
+        if: steps.checkout.outcome == 'success'
+        run: |
+          RETENTION_DAYS=${{ steps.retention.outputs.days }}
+          CUTOFF_DATE=$(date -u -d "$RETENTION_DAYS days ago" +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -v-${RETENTION_DAYS}d +%Y-%m-%dT%H:%M:%SZ)
+
+          echo "Cutoff date: $CUTOFF_DATE"
+          echo "Checking timestamps in .timestamps/"
+
+          CLEANED=0
+
+          if [ -d ".timestamps" ]; then
+            for timestamp_file in .timestamps/*; do
+              if [ -f "$timestamp_file" ]; then
+                DEPLOY_NAME=$(basename "$timestamp_file")
+                DEPLOY_TIME=$(cat "$timestamp_file")
+
+                echo "Checking $DEPLOY_NAME (last deployed: $DEPLOY_TIME)"
+
+                # Compare timestamps
+                if [[ "$DEPLOY_TIME" < "$CUTOFF_DATE" ]]; then
+                  echo "  -> Stale! Removing $DEPLOY_NAME"
+                  rm -rf "$DEPLOY_NAME"
+                  rm -f "$timestamp_file"
+                  CLEANED=$((CLEANED + 1))
+                else
+                  echo "  -> Fresh, keeping"
+                fi
+              fi
+            done
+          fi
+
+          echo "Cleaned up $CLEANED stale deployments"
+          echo "cleaned=$CLEANED" >> $GITHUB_OUTPUT
+
+      - name: Commit and push cleanup
+        if: steps.checkout.outcome == 'success'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Scheduled cleanup: remove stale staging deployments"
+            git push origin gh-pages-staging
+          fi
