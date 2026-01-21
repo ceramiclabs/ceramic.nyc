@@ -36,7 +36,7 @@ export function AlsideCaseStudy() {
         <Blurb
           title="Custom ontology &amp; OSDK"
           highlightColor={HIGHLIGHT_COLOR}
-          className="lg:max-w-[440px]"
+          className="lg:max-w-[445px]"
         >
           We built a dedicated ontology, with cohesive data designed to give
           real people the information they need. Where complexity arose, we used
@@ -47,7 +47,7 @@ export function AlsideCaseStudy() {
         <Blurb
           title="Rethinking &amp; digitizing processes"
           highlightColor={HIGHLIGHT_COLOR}
-          className="lg:max-w-[440px]"
+          className="lg:max-w-[450px]"
         >
           Leveraging our UI toolkit,{" "}
           <span className="font-semibold blue">Glaze</span>, we built a custom
