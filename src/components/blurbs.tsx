@@ -24,7 +24,7 @@ export function Blurbs({ children, className }: Props) {
             ease: "easeOut",
             delay: 0.4 + index * 0.2,
           }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
         >
           {child}
         </motion.div>

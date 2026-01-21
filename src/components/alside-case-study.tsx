@@ -9,7 +9,8 @@ export function AlsideCaseStudy() {
   return (
     <CaseStudySection
       id="alside"
-      backgroundImage="/path/to/your/image.jpg"
+      backgroundImage=""
+      className="mt-10"
       title={
         <Title style={{ color: HIGHLIGHT_COLOR }}>
           <span>Alside</span>
@@ -36,7 +37,7 @@ export function AlsideCaseStudy() {
         <Blurb
           title="Custom ontology &amp; OSDK"
           highlightColor={HIGHLIGHT_COLOR}
-          className="lg:max-w-[445px]"
+          className="lg:max-w-[452px]"
         >
           We built a dedicated ontology, with cohesive data designed to give
           real people the information they need. Where complexity arose, we used
@@ -47,7 +48,7 @@ export function AlsideCaseStudy() {
         <Blurb
           title="Rethinking &amp; digitizing processes"
           highlightColor={HIGHLIGHT_COLOR}
-          className="lg:max-w-[450px]"
+          className="lg:max-w-[452px]"
         >
           Leveraging our UI toolkit,{" "}
           <span className="font-semibold blue">Glaze</span>, we built a custom

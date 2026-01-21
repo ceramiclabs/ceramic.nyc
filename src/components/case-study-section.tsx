@@ -11,6 +11,7 @@ interface Props {
   subtitle: React.ReactNode
   children?: React.ReactNode
   bottomContent?: React.ReactNode
+  className?: string
 }
 
 export function CaseStudySection({
@@ -20,6 +21,7 @@ export function CaseStudySection({
   subtitle,
   children,
   bottomContent,
+  className,
 }: Props) {
   return (
     <section
@@ -29,7 +31,8 @@ export function CaseStudySection({
         "flex flex-col",
 
         // TEMP until we get more content in - remove after
-        "!pt-24 lg:!pt-0"
+        "!pt-24 lg:!pt-0",
+        className
       )}
     >
       {backgroundImage && <BackgroundImage uri={backgroundImage} />}
@@ -77,7 +80,7 @@ export function BackgroundImage({ uri }: BackgroundImagesProps) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 0.2 }}
       transition={{ duration: 1.2, ease: "easeOut" }}
-      viewport={{ once: false, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.2 }}
       className="absolute inset-0 overflow-hidden"
     >
       <div

@@ -30,7 +30,7 @@ export function Title({ children, className, ...attrs }: Props) {
             ease: "easeOut",
             delay: index * 0.2,
           }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           style={{ display: "block" }}
         >
           {child}
@@ -64,7 +64,7 @@ export function Subtitle({ children, className, ...attrs }: Props) {
             ease: "easeOut",
             delay: index * 0.2,
           }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           style={{ display: "block" }}
         >
           {child}
