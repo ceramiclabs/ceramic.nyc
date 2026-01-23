@@ -10,7 +10,7 @@ export function AlsideCaseStudy() {
     <CaseStudySection
       id="alside"
       backgroundImage=""
-      className="mt-10"
+      className="lg:!pt-32"
       title={
         <Title style={{ color: HIGHLIGHT_COLOR }}>
           <span>Alside</span>
