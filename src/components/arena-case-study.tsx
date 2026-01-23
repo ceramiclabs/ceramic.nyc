@@ -32,14 +32,14 @@ export function ArenaCaseStudy() {
             collaboration.
           </span>
         </Standfirst>
-        <Blurb highlightColor={HIGHLIGHT_COLOR} className="lg:max-w-[440px]">
+        <Blurb highlightColor={HIGHLIGHT_COLOR} className="lg:!max-w-[440px]">
           Operating as embedded tech leads, we helped conceive, design, and ship
           four AI-powered applications, each tailored to a specific customer and
           delivered on aggressive timelines. We worked shoulder-to-shoulder with
           internal teams and end users, moving from whiteboard to prototype to
           production in tight, iterative cycles.
         </Blurb>
-        <Blurb highlightColor={HIGHLIGHT_COLOR} className="lg:max-w-[420px]">
+        <Blurb highlightColor={HIGHLIGHT_COLOR} className="lg:!max-w-[420px]">
           Our team built across the full stack - spanning React, Python, OpenAI
           integrations, video and audio systems, and computer vision - all while
           driving rapid experimentation, real-world feedback, and continuous
