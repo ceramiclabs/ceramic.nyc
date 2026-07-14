@@ -11,7 +11,7 @@ type Section = {
 const sections: Array<Section> = [
   { id: "intro", label: "Dual CTOs" },
   { id: "product", label: "Product-forward" },
-  { id: "alside", label: "Alside", customColor: "#e76e50" },
+  // { id: "alside", label: "Alside", customColor: "#e76e50" },
   { id: "arena", label: "Arena", customColor: "#ddff0e" },
   { id: "rendevu", label: "Rendevu", customColor: "#ef5da8" },
   { id: "contact", label: "Get in touch" },
@@ -46,8 +46,8 @@ export function SectionNav() {
     <div
       className={cx(
         "fade-in fixed right-6 z-50 top-1/2 -translate-y-1/2 px-4 py-6 rounded-3xl",
-        "bg-white/5 backdrop-blur-xl border border-white/10",
-        "shadow-2xl shadow-black/20 lg:right-8"
+        "bg-white/5 backdrop-blur-xl border border-white/10 hidden md:block",
+        "shadow-2xl shadow-black/20 lg:right-8",
       )}
     >
       <div className={cx("flex flex-col gap-6 items-center")}>
@@ -61,7 +61,7 @@ export function SectionNav() {
             <motion.div
               className={cx(
                 "w-2 h-2 rounded-full",
-                !activeId ? "bg-white/20" : ""
+                !activeId ? "bg-white/20" : "",
               )}
               animate={{
                 scale: activeId === section.id ? 1.2 : 1,
