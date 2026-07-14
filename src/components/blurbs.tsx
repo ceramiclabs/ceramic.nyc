@@ -54,7 +54,7 @@ export function Blurb({
         "text-xs gap-2 flex flex-col",
         "max-w-64",
         "lg:text-sm lg:max-w-xs",
-        className
+        className,
       )}
     >
       {title && (
@@ -66,7 +66,10 @@ export function Blurb({
         </span>
       )}
       <span
-        className={cx("font-light text-white/80 leading-normal", textClassName)}
+        className={cx(
+          "font-light text-white/80 leading-normal text-balance",
+          textClassName,
+        )}
       >
         {children}
       </span>
@@ -82,11 +85,11 @@ export function Standfirst(props: StandfirstProps) {
       {...props}
       className={cx(
         "!max-w-lg pr-10 lg:pr-0 lg:max-w-[510px] mb-2",
-        props.className
+        props.className,
       )}
       textClassName={cx(
         "font-display text-xl lg:text-2xl font-thin",
-        props.textClassName
+        props.textClassName,
       )}
     />
   )
