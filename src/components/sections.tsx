@@ -6,13 +6,13 @@ export function IntroSection() {
   return (
     <ScrollSection id="intro">
       <Title className="!2xl:max-w-[70%]">
-        <span className="blue">Dual CTOs.</span>
-        <span>Experts in product-led innovation</span>
+        <span className="blue">Experts</span>
+        <span>in product innovation</span>
         <span>&amp; modern dev.</span>
       </Title>
       <Blurbs>
         <Standfirst className="lg:!max-w-[430px]">
-          Large teams, small team, no team, building cultures and devx from
+          Big team, small team, no team, building cultures and devx from
           scratch. The goal is the same &mdash;{" "}
           <span className="blue font-semibold">
             dig your heels in and deliver.

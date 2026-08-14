@@ -1,0 +1,157 @@
+{
+  "$comment": "Ceramic design tokens v2 — extracted from ceramic.nyc source (src/style.css + components). Each leaf carries `value` and the matching `cssVar` from design-tokens.css. Exact to production unless \"added\":true (a11y additions for handoff). Contrast ratios are measured against --color-ink (#0d1212).",
+  "meta": {
+    "brand": "Ceramic",
+    "version": 2,
+    "source": "ceramic.nyc (Vite + React + Tailwind, framer-motion)",
+    "colorScheme": "dark-first"
+  },
+  "color": {
+    "core": {
+      "ink":     { "value": "#0d1212", "cssVar": "--color-ink", "sourceName": "blue-black", "use": "base surface / darkest brand color" },
+      "accent":  { "value": "#a6e4f7", "cssVar": "--color-accent", "rgb": "166, 228, 247", "sourceName": "light-blue", "use": "the single accent — links, highlights, active states, glow", "contrastOnInk": "13.54:1 (AAA)", "updated": "2026-08-05 — was #add8e6; +30 saturation, +2 lightness for a brighter, more luminous read. Deliberate brand change: the live site still ships #add8e6 and should be updated." },
+      "white":   { "value": "#ffffff", "cssVar": "--color-white" },
+      "grey300": { "value": "#444444", "cssVar": "--color-grey-300" }
+    },
+    "background": {
+      "top":      { "value": "#000000", "cssVar": "--color-bg-top" },
+      "bottom":   { "value": "#111111", "cssVar": "--color-bg-bottom" },
+      "gradient": { "value": "linear-gradient(to bottom, #000000, #111111)", "cssVar": "--gradient-bg", "use": "body background" }
+    },
+    "text": {
+      "primary":   { "value": "#ffffff", "cssVar": "--color-text", "contrastOnInk": "18.88:1 (AAA)" },
+      "secondary": { "value": "rgba(255,255,255,0.8)", "cssVar": "--color-text-secondary", "contrastOnInk": "12.21:1 (AAA)", "use": "body copy" },
+      "muted":     { "value": "rgba(255,255,255,0.4)", "cssVar": "--color-text-muted", "contrastOnInk": "3.83:1 (AA Large only)", "use": "fine print / legal — not for essential body text" }
+    },
+    "line": {
+      "hairline":    { "value": "#44403c", "cssVar": "--color-hairline", "sourceName": "stone-700", "use": "subtitle underline rule" },
+      "borderGlass": { "value": "rgba(255,255,255,0.1)", "cssVar": "--color-border-glass", "use": "glass component borders" }
+    },
+    "surface": {
+      "glass":      { "value": "rgba(255,255,255,0.05)", "cssVar": "--color-surface-glass" },
+      "glassHover": { "value": "rgba(255,255,255,0.1)", "cssVar": "--color-surface-glass-hover" },
+      "subtle":     { "value": "rgba(255,255,255,0.2)", "cssVar": "--color-subtle", "use": "inactive nav dots, scrollbar thumb" }
+    },
+    "projectAccent": {
+      "arena":   { "value": "#ddff0e", "cssVar": "--color-accent-arena", "contrastOnInk": "16.53:1 (AAA)", "use": "Arena case study — acid lime" },
+      "rendevu": { "value": "#ef5da8", "cssVar": "--color-accent-rendevu", "contrastOnInk": "6.11:1 (AA)", "use": "Rendevu case study — pink" },
+      "alside":  { "value": "#e76e50", "cssVar": "--color-accent-alside", "contrastOnInk": "6.06:1 (AA)", "use": "Alside case study — coral" }
+    },
+    "a11y": {
+      "focus":     { "value": "#a6e4f7", "cssVar": "--color-focus", "added": true, "use": "focus ring color = accent" },
+      "focusRing": { "value": "0 0 0 2px #0d1212, 0 0 0 4px #a6e4f7", "cssVar": "--focus-ring", "added": true, "use": "2px offset + 2px accent ring for keyboard focus" }
+    }
+  },
+  "typography": {
+    "family": {
+      "display": { "value": "\"Encode Sans Condensed\", sans-serif", "cssVar": "--font-display", "weightsLoaded": [600, 700, 800], "use": "all headings, labels, logo" },
+      "sans":    { "value": "\"Roboto\", Helvetica, sans-serif", "cssVar": "--font-sans", "weightsLoaded": [300], "use": "body copy" }
+    },
+    "weight": {
+      "body":       { "value": 300, "cssVar": "--weight-body" },
+      "standfirst": { "value": 600, "cssVar": "--weight-standfirst", "note": "markup says font-thin(100) but only 600–800 are loaded, so it renders at 600; made explicit. Load Encode 300 to get a true thin." },
+      "semibold":   { "value": 600, "cssVar": "--weight-semibold" },
+      "bold":       { "value": 700, "cssVar": "--weight-bold" },
+      "extrabold":  { "value": 800, "cssVar": "--weight-extrabold" }
+    },
+    "opticalRule": "As type gets smaller it must breathe: tracking opens toward 0, leading opens toward 1.5, and weight steps down from 700. Tracking is expressed in `em` so it scales with font-size — a fixed `rem` tracking gets proportionally TIGHTER as type shrinks, which is backwards. (The live site currently uses rem tracking, which makes the 96px subtitle optically tighter (−0.042em) than the 160px title (−0.03em), and crushes the 5rem mobile title to −0.06em.)",
+    "scale": {
+      "h1":         { "role": "display title — page primary heading", "element": "should be <h1>; site currently ships <h2>", "family": "display", "weight": 700, "cssVar": "--size-h1", "size": { "mobile": "5rem", "desktop": "10rem" }, "lineHeight": "0.75", "letterSpacing": "-0.03em" },
+      "h2":         { "role": "subtitle", "family": "display", "weight": 600, "cssVar": "--size-h2", "size": { "mobile": "2.5rem", "desktop": "6rem" }, "lineHeight": "0.86", "letterSpacing": "-0.02em", "note": "bottom hairline rule (stone-700). Lighter + looser than h1 — site currently ships 700 / 0.8 / −0.25rem." },
+      "h3":         { "role": "section heading", "family": "display", "weight": 600, "cssVar": "--size-h3", "size": { "mobile": "1.75rem", "desktop": "3rem" }, "lineHeight": "0.95", "letterSpacing": "-0.01em" },
+      "h4":         { "role": "small heading", "family": "display", "weight": 600, "cssVar": "--size-h4", "size": { "mobile": "1.25rem", "desktop": "1.75rem" }, "lineHeight": "1.1", "letterSpacing": "-0.005em" },
+      "standfirst": { "role": "Standfirst · SM — the in-column lede that sits beside a title", "family": "display", "weight": 600, "cssVar": "--size-standfirst", "size": { "mobile": "1.25rem", "desktop": "1.5rem" }, "lineHeight": "1.35", "letterSpacing": "0", "note": "For the larger Standfirst · LG, see component.statement." },
+      "label":      { "role": "blurb / eyebrow label", "family": "display", "weight": 600, "cssVar": "--size-label", "size": { "mobile": "0.75rem", "desktop": "0.875rem" }, "lineHeight": "1.4", "letterSpacing": "0.02em", "color": "accent", "note": "small type — tracked slightly OPEN for legibility" },
+      "body":       { "role": "body copy", "family": "sans", "weight": 300, "cssVar": "--size-body", "size": { "mobile": "0.75rem", "desktop": "0.875rem" }, "lineHeight": "1.5", "letterSpacing": "0", "color": "text.secondary" },
+      "legal":      { "role": "fine print / footer", "family": "sans", "weight": 300, "cssVar": "--size-legal", "size": "10px", "color": "text.muted" }
+    }
+  },
+  "component": {
+    "eyebrow": {
+      "$description": "A small, wide, uppercase label that sits ABOVE a heading and says what you are looking at. It is the deliberate inverse of the display type — display is large/tight/mixed-case, the eyebrow is small/wide/uppercase — and that opposition is what makes it read as a label rather than a heading. This is the only place in the system where tracking goes positive.",
+      "size":          { "value": { "mobile": "0.75rem", "desktop": "0.8rem" }, "cssVar": "--eyebrow-size" },
+      "weight":        { "value": 600, "cssVar": "--eyebrow-weight" },
+      "tracking":      { "value": "0.28em", "cssVar": "--eyebrow-tracking", "note": "positive — uppercase at small sizes needs the air; the counterpoint to the −0.03em display tracking" },
+      "transform":     { "value": "uppercase", "cssVar": "--eyebrow-transform" },
+      "color":         { "value": "var(--color-accent)", "cssVar": "--eyebrow-color" },
+      "colorMuted":    { "value": "var(--color-text-muted)", "cssVar": "--eyebrow-color-muted", "use": "when the eyebrow should recede — running heads, metadata" },
+      "gap":           { "value": "18px", "cssVar": "--eyebrow-gap", "use": "eyebrow → the heading beneath it" },
+      "variants": {
+        "eyebrow":         { "class": ".eyebrow", "color": "accent" },
+        "eyebrowMuted":    { "class": ".eyebrow--muted", "color": "text.muted" },
+        "eyebrowCentered": { "class": ".eyebrow--centered", "note": "negative right margin compensates for trailing letter-space so centering stays optical" }
+      },
+      "rules": {
+        "do":   ["2–4 words", "always paired with a heading directly beneath", "one per heading"],
+        "dont": ["never a sentence or a clause", "never stands alone without a heading", "never set in a project accent unless the whole block is that project"]
+      }
+    },
+    "statement": {
+      "$description": "ONE type treatment, TWO variants. Display family at light weight, set large, with the clause that matters in accent + Encode 600 — it reads as a spoken claim rather than a headline. `.statement` opens a page or major section (Standfirst · LG). `.statement--ruled` adds a left accent rule and sets off a claim inside running content (the pull statement). The rule is the only difference; never use both in one view.",
+      "variants": {
+        "statement":       { "class": ".statement", "role": "Standfirst · LG — opens a page or major section", "rule": false },
+        "statementRuled":  { "class": ".statement--ruled", "role": "Pull statement — sets off a claim in running content", "rule": true }
+      },
+      "size":          { "value": { "mobile": "1.5rem", "desktop": "2rem" }, "cssVar": "--statement-size" },
+      "weight":        { "value": 300, "cssVar": "--statement-weight" },
+      "weightEmphasis":{ "value": 600, "cssVar": "--statement-weight-emphasis", "use": "the emphasised clause inside, set in accent — same weight at both sizes (LG and SM)" },
+      "lineHeight":    { "value": 1.15, "cssVar": "--statement-leading" },
+      "letterSpacing": { "value": "-0.01em", "cssVar": "--statement-tracking" },
+      "maxWidth":      { "value": "52ch", "cssVar": "--statement-max-width" },
+      "ruleWidth":     { "value": "2px", "cssVar": "--statement-rule-width", "use": "ruled variant only" },
+      "ruleColor":     { "value": "var(--color-accent)", "cssVar": "--statement-rule-color" },
+      "gap":           { "value": "24px", "cssVar": "--statement-gap", "use": "rule → text" },
+      "legacyAliases": "--pull-* variables remain as aliases of --statement-*"
+    }
+  },
+  "textWrap": {
+    "$rule": "System-wide, not opt-in. Every display-level element balances; every paragraph uses pretty.",
+    "display": { "value": "balance", "cssVar": "--wrap-display", "tailwind": "text-balance", "appliesTo": "h1–h6, .statement, .pull, .standfirst, .label, blockquote, figcaption", "note": "Browsers cap balancing at ~6 lines — which is why it is not used for paragraphs." },
+    "body":    { "value": "pretty", "cssVar": "--wrap-body", "tailwind": "text-pretty", "appliesTo": "p, li, dd, body copy", "note": "Prevents orphans with no line-count limit." }
+  },
+  "spacing": {
+    "spacerSm": { "value": "8px",  "cssVar": "--spacer-sm" },
+    "spacerMd": { "value": "32px", "cssVar": "--spacer-md" },
+    "spacer":   { "value": "40px", "cssVar": "--spacer" },
+    "gutterSm": { "value": "24px", "cssVar": "--gutter-sm" },
+    "gutter":   { "value": "50px", "cssVar": "--gutter" },
+    "gutterMd": { "value": "70px", "cssVar": "--gutter-md" },
+    "gutterLg": { "value": "112px","cssVar": "--gutter-lg" },
+    "gutterXl": { "value": "140px","cssVar": "--gutter-xl" },
+    "layout": {
+      "containerInset": { "value": "80%", "cssVar": "--container-inset", "use": "centered content column (mx-auto max-w-[80%])" },
+      "stackGap":   { "value": { "mobile": "24px", "desktop": "32px" }, "cssVar": "--stack-gap", "use": "gap within a blurb column" },
+      "sectionGap": { "value": { "mobile": "64px", "desktop": "80px" }, "cssVar": "--section-gap", "use": "gap between title block and content" },
+      "sectionPadTop": { "value": "96px", "cssVar": "--section-pad-top" }
+    }
+  },
+  "radius": {
+    "pill":      { "value": "9999px", "cssVar": "--radius-pill" },
+    "r3xl":      { "value": "24px",   "cssVar": "--radius-3xl" },
+    "bar":       { "value": "8px",    "cssVar": "--radius-bar" },
+    "scrollbar": { "value": "3px",    "cssVar": "--radius-scrollbar" }
+  },
+  "effect": {
+    "glowAccent":  { "value": "0 0 8px 2px rgba(166, 228, 247,0.6), 0 0 16px 4px rgba(166, 228, 247,0.3)", "cssVar": "--glow-accent" },
+    "shadowGlass": { "value": "0 25px 50px -12px rgba(0,0,0,0.2)", "cssVar": "--shadow-glass" },
+    "blurGlass":   { "value": "24px", "cssVar": "--blur-glass" },
+    "blurGlassSm": { "value": "4px",  "cssVar": "--blur-glass-sm" },
+    "noiseTexture":{ "value": "320px grain tile · wrapper .3 / layer .5 · radial vignette", "note": "animated film-grain overlay" }
+  },
+  "motion": {
+    "easing":      { "value": "cubic-bezier(0,0,0.2,1)", "cssVar": "--ease", "name": "easeOut" },
+    "fadeIn":      { "duration": "800ms", "delay": "600ms", "cssVar": "--dur-fade" },
+    "titleReveal": { "transform": "translateY(100px)→0", "opacity": "0→1", "duration": "800ms", "stagger": "200ms/line", "trigger": "in-view once, amount 0.3" },
+    "blurbReveal": { "transform": "translateX(50px)→0", "opacity": "0→1", "duration": "500ms", "delayBase": "400ms", "stagger": "200ms" },
+    "noise":       { "value": "1s steps(11) infinite" },
+    "hover":       { "chevronScale": 1.1, "dotActiveScale": 1.2, "duration": "300ms", "cssVar": "--dur-hover" }
+  },
+  "logo": {
+    "wordmark": "Ceramic",
+    "typeface": "Encode Sans Condensed SemiBold (600)",
+    "tracking": "tight, negative (per-glyph optical)",
+    "variants": { "onDark": "white", "onLight": "black" },
+    "headerSize": "80px wide (w-20)",
+    "files": ["ceramic-logo-white.svg", "ceramic-logo-black.svg"]
+  }
+}

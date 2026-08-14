@@ -9,7 +9,7 @@ type Section = {
 }
 
 const sections: Array<Section> = [
-  { id: "intro", label: "Dual CTOs" },
+  { id: "intro", label: "Experts" },
   { id: "product", label: "Product-forward" },
   // { id: "alside", label: "Alside", customColor: "#e76e50" },
   { id: "arena", label: "Arena", customColor: "#ddff0e" },
