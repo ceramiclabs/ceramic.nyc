@@ -1,5 +1,6 @@
 import { CaseStudySection } from "./case-study-section"
-import { Blurb, Blurbs, Standfirst } from "./blurbs"
+import { Blurb, Blurbs } from "./blurbs"
+import { Standfirst } from "./standfirst"
 import { Subtitle, Title } from "./title"
 import arenaBackground from "../assets/arena-kareem-game-play.png"
 

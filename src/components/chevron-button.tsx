@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import cx from "clsx"
 
-const SECTION_IDS = ["intro", "product", "alside", "arena", "rendevu", "contact"]
+const SECTION_IDS = ["product", "intro", "alside", "arena", "rendevu", "contact"]
 
 export function ChevronButton() {
   const [isHovered, setIsHovered] = useState(false)

@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "pnpm",
+      "args": [
+        "exec",
+        "playwright-mcp",
+        "--browser",
+        "chrome",
+        "--headless",
+        "--viewport-size",
+        "1440x900"
+      ]
+    }
+  }
+}

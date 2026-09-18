@@ -51,8 +51,7 @@ export function Blurb({
   return (
     <div
       className={cx(
-        "text-xs gap-2 flex flex-col",
-        "max-w-64",
+        "text-xs gap-2 flex flex-col max-w-64",
         "lg:text-sm lg:max-w-xs",
         className,
       )}
@@ -74,23 +73,5 @@ export function Blurb({
         {children}
       </span>
     </div>
-  )
-}
-
-interface StandfirstProps extends BlurbProps {}
-
-export function Standfirst(props: StandfirstProps) {
-  return (
-    <Blurb
-      {...props}
-      className={cx(
-        "!max-w-lg pr-10 lg:pr-0 lg:max-w-[510px] mb-2",
-        props.className,
-      )}
-      textClassName={cx(
-        "font-display text-xl lg:text-2xl font-thin",
-        props.textClassName,
-      )}
-    />
   )
 }

@@ -13,10 +13,10 @@ export function Title({ children, className, ...attrs }: Props) {
   return (
     <h2
       className={cx(
-        "leading-[.75em] tracking-[-0.3rem] font-display font-bold text-[5rem]",
-        "lg:text-[10rem] lg:flex-shrink-0 lg:max-w-[60%]",
+        "leading-[.8em] tracking-[-0.3rem] font-display font-bold text-[5rem]",
+        "lg:text-[10rem] lg:flex-shrink-0 lg:max-w-[60%] lg:leading-[.75em]",
         "[&>span]:inline-block",
-        className
+        className,
       )}
       {...attrs}
     >
@@ -50,7 +50,7 @@ export function Subtitle({ children, className, ...attrs }: Props) {
         "lg:text-[6rem] lg:tracking-[-0.25rem] lg:leading-[.8em]",
         "border-b border-stone-700 pb-9 mt-4",
         "[&>span]:inline-block",
-        className
+        className,
       )}
       {...attrs}
     >

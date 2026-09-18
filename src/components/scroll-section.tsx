@@ -13,15 +13,16 @@ export function ScrollSection({ id, children, backgroundColor }: Props) {
     <section
       id={id}
       className={cx(
-        "relative min-h-screen pt-24 flex justify-start items-start",
-        "lg:items-center lg:pt-0 last:pb-24 lg:last:pb-0"
+        "relative min-h-screen flex justify-start items-center",
+        "last:pb-24 lg:last:pb-0",
       )}
     >
       <Noise backgroundColor={backgroundColor} />
       <div
         className={cx(
-          "relative z-10 mx-auto max-w-[80%] flex flex-col gap-16",
-          "lg:flex-row lg:items-center lg:gap-20"
+          "relative z-10 flex flex-col gap-16",
+          "lg:flex-row lg:items-center lg:gap-20",
+          "mx-auto max-w-[80%] md:max-w-[90%] xl:max-w-[85%] 2xl:max-w-[60%]",
         )}
       >
         {children}
