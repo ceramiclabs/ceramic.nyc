@@ -1,6 +1,7 @@
 import { CaseStudySection } from "../components/case-study-section"
 import { SalesChart } from "../components/sales-chart"
-import { Blurb, Blurbs, Standfirst } from "./blurbs"
+import { Blurb, Blurbs } from "./blurbs"
+import { Standfirst } from "./standfirst"
 import { Subtitle, Title } from "./title"
 
 const HIGHLIGHT_COLOR = "#e76e50"
