@@ -32,7 +32,7 @@ export function CaseStudySection({
 
         // TEMP until we get more content in - remove after
         "!pt-24 lg:!pt-0",
-        className
+        className,
       )}
     >
       {backgroundImage && <BackgroundImage uri={backgroundImage} />}
@@ -41,12 +41,12 @@ export function CaseStudySection({
 
       <div
         className={cx(
-          "relative z-10 flex-1 mx-auto max-w-[80%] w-full",
-          "flex flex-col gap-8",
+          "relative z-10 flex flex-1 flex-col gap-8 justify-center",
+          "mx-auto max-w-[80%] md:max-w-[90%] xl:max-w-[85%] 2xl:max-w-[60%] w-full",
           "lg:flex-row lg:items-start lg:gap-20",
 
           // TEMP until we get more content in - remove after
-          "lg:!items-center"
+          "lg:!items-center",
         )}
       >
         <div className="lg:flex-1">

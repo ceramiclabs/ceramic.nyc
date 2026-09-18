@@ -1,59 +1,40 @@
 import { ScrollSection } from "../components/scroll-section"
 import { Title } from "../components/title"
-import { Blurb, Blurbs, Standfirst } from "../components/blurbs"
-
-export function IntroSection() {
-  return (
-    <ScrollSection id="intro">
-      <Title className="!2xl:max-w-[70%]">
-        <span className="blue">Experts</span>
-        <span>in product innovation</span>
-        <span>&amp; modern dev.</span>
-      </Title>
-      <Blurbs>
-        <Standfirst className="lg:!max-w-[430px]">
-          Big team, small team, no team, building cultures and devx from
-          scratch. The goal is the same &mdash;{" "}
-          <span className="blue font-semibold">
-            dig your heels in and deliver.
-          </span>
-        </Standfirst>
-        <Blurb title="Forward-thinking" className="lg:!max-w-[310px]">
-          Obsessively explore emerging technologies, optimizing our tooling -
-          never rigid in our methods and selection process.
-        </Blurb>
-        <Blurb title="Design-driven">
-          With backgrounds in architecture and UX design, we apply creativity to
-          all aspects of our work and constantly refine our craft.
-        </Blurb>
-      </Blurbs>
-    </ScrollSection>
-  )
-}
+import { Standfirst } from "../components/standfirst"
 
 export function ProductSection() {
   return (
-    <ScrollSection id="product" backgroundColor="bg-light-blue/70">
+    <ScrollSection id="product">
       <Title>
         <span>Product-forward.</span>
         <span>AI-native.</span>
         <span className="blue">Human-centered.</span>
       </Title>
-      <Blurbs>
-        <Standfirst className="lg:!max-w-[450px]">
-          <span className="blue font-semibold">We build with intent.</span>{" "}
-          Every decision is measured against real user needs and business
-          impact.
-        </Standfirst>
-        <Blurb title="Skip the hype" className="lg:!max-w-[350px]">
-          Old-school craft. New-school tools. We fuse traditional engineering
-          rigor with AI-powered execution.
-        </Blurb>
-        <Blurb title="Unapologetically human">
-          Technology serves people. We design systems and experiences that
-          augment human capability, not replace it.
-        </Blurb>
-      </Blurbs>
+      <Standfirst>
+        <span className="blue font-semibold">
+          We design systems and experiences that amplify human capability
+        </span>
+        , informed by real users and measured by business impact. We fuse
+        AI-native research, design, and execution with old-school craft.
+      </Standfirst>
+    </ScrollSection>
+  )
+}
+
+export function IntroSection() {
+  return (
+    <ScrollSection id="intro">
+      <Title>
+        <span className="blue">Design-driven.</span>
+        <span>Forward-thinking.</span>
+        <span>Exacting.</span>
+      </Title>
+      <Standfirst>
+        Perfection doesn&rsquo;t exist. The work is to{" "}
+        <span className="blue font-semibold">continuously refine and ship</span>
+        . We apply creativity to every aspect of our work and continuously
+        sharpen our craft.
+      </Standfirst>
     </ScrollSection>
   )
 }
@@ -62,27 +43,20 @@ export function ContactSection() {
   return (
     <ScrollSection id="contact">
       <Title>
-        <span>Let us be</span>
-        <span className="blue">your force multiplier.</span>
+        <span>Your</span>
+        <span className="blue">force multiplier.</span>
         <span className="smaller">
           <a href="mailto:hello@ceramic.nyc">hello@ceramic.nyc</a>
         </span>
       </Title>
-      <Blurbs className="lg:self-start lg:mt-6">
-        <Standfirst className="lg:!max-w-[440px]">
-          <span className="blue font-semibold">Do more with less.</span> You
-          decide on the footprint, together we can tackle any idea from
-          conception to delivery and beyond.
-        </Standfirst>
-        <Blurb title="No death by process">
-          Time is money, and speed is the strategy. We stay light, move fast,
-          and ship what matters.
-        </Blurb>
-        <Blurb title="We keep it simple">
-          Retain us for Advisory &amp; Leadership; Hire us for Design & Software
-          Development. Our favorite &mdash; Do both. Either way, we come in hot.
-        </Blurb>
-      </Blurbs>
+      <Standfirst>
+        <span className="blue font-semibold">
+          Founder-grade product and engineering
+        </span>
+        , embedded until the job is done. From first principles to production,
+        we work the problem end to end. We move fast, ship what matters, and
+        keep moving.
+      </Standfirst>
     </ScrollSection>
   )
 }

@@ -15,8 +15,8 @@
 :root {
   /* --- Color · core -------------------------------------------------------
      (site source names in parentheses)                                     */
-  --color-ink: #0d1212;                 /* (blue-black) base surface          */
-  --color-accent: #a6e4f7;              /* the one accent · 13.5:1 AAA on ink */
+  --color-ink: #0d1212; /* (blue-black) base surface          */
+  --color-accent: #a6e4f7; /* the one accent · 13.5:1 AAA on ink */
   --color-accent-rgb: 166, 228, 247;
   --color-white: #ffffff;
   --color-grey-300: #444444;
@@ -24,39 +24,47 @@
   /* Body background is a vertical gradient, not a flat fill */
   --color-bg-top: #000000;
   --color-bg-bottom: #111111;
-  --gradient-bg: linear-gradient(to bottom, var(--color-bg-top), var(--color-bg-bottom));
+  --gradient-bg: linear-gradient(
+    to bottom,
+    var(--color-bg-top),
+    var(--color-bg-bottom)
+  );
 
   /* --- Color · text on dark ---------------------------------------------- */
-  --color-text: #ffffff;                        /* primary   · 18.9:1 AAA     */
-  --color-text-secondary: rgba(255,255,255,0.8);/* body      · 12.2:1 AAA     */
-  --color-text-muted: rgba(255,255,255,0.4);    /* fine print· 3.8:1  (large) */
+  --color-text: #ffffff; /* primary   · 18.9:1 AAA     */
+  --color-text-secondary: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* body      · 12.2:1 AAA     */
+  --color-text-muted: rgba(255, 255, 255, 0.4); /* fine print· 3.8:1  (large) */
 
   /* --- Color · lines & glass surfaces ------------------------------------ */
-  --color-hairline: #44403c;                    /* (stone-700) subtitle rule  */
-  --color-border-glass: rgba(255,255,255,0.1);
-  --color-surface-glass: rgba(255,255,255,0.05);
-  --color-surface-glass-hover: rgba(255,255,255,0.1);
-  --color-subtle: rgba(255,255,255,0.2);        /* dots, scrollbar            */
+  --color-hairline: #44403c; /* (stone-700) subtitle rule  */
+  --color-border-glass: rgba(255, 255, 255, 0.1);
+  --color-surface-glass: rgba(255, 255, 255, 0.05);
+  --color-surface-glass-hover: rgba(255, 255, 255, 0.1);
+  --color-subtle: rgba(255, 255, 255, 0.2); /* dots, scrollbar            */
 
   /* --- Color · project accents ------------------------------------------- */
-  --color-accent-arena: #ddff0e;        /* acid lime  · 16.5:1 AAA            */
-  --color-accent-rendevu: #ef5da8;      /* pink       · 6.1:1  AA             */
-  --color-accent-alside: #e76e50;       /* coral      · 6.1:1  AA             */
+  --color-accent-arena: #ddff0e; /* acid lime  · 16.5:1 AAA            */
+  --color-accent-rendevu: #ef5da8; /* pink       · 6.1:1  AA             */
+  --color-accent-alside: #e76e50; /* coral      · 6.1:1  AA             */
 
   /* --- Color · a11y (added) ---------------------------------------------- */
-  --color-focus: #a6e4f7;               /* focus ring = accent                */
+  --color-focus: #a6e4f7; /* focus ring = accent                */
   --focus-ring: 0 0 0 2px var(--color-ink), 0 0 0 4px var(--color-focus);
 
-
   /* --- Typography · families --------------------------------------------- */
-  --font-display: "Encode Sans Condensed", sans-serif;  /* headings + labels  */
-  --font-sans: "Roboto", Helvetica, sans-serif;         /* body               */
+  --font-display: "Encode Sans Condensed", sans-serif; /* headings + labels  */
+  --font-sans: "Roboto", Helvetica, sans-serif; /* body               */
 
   /* --- Typography · weights (only these are loaded from the family) ------- */
-  --weight-body: 300;                   /* Roboto Light — body default        */
-  --weight-standfirst: 600;             /* see note ▼                         */
-  --weight-semibold: 600;               /* logo, labels                       */
-  --weight-bold: 700;                   /* titles, subtitles                  */
+  --weight-body: 300; /* Roboto Light — body default        */
+  --weight-standfirst: 600; /* see note ▼                         */
+  --weight-semibold: 600; /* logo, labels                       */
+  --weight-bold: 700; /* titles, subtitles                  */
   --weight-extrabold: 800;
   /* NOTE: the site markup sets the standfirst to `font-thin` (100), but only
      Encode 600/700/800 are loaded, so the browser resolves it to 600. Token
@@ -70,37 +78,51 @@
      proportionally tighter as type shrinks, which is the wrong direction.   */
 
   /* Display / H1 — the hero line. Tight is correct at this size.            */
-  --size-h1: 10rem;            --size-h1-mobile: 5rem;
+  --size-h1: 10rem;
+  --size-h1-mobile: 5rem;
   --weight-h1: 700;
-  --leading-h1: 0.75;          --tracking-h1: -0.03em;
+  --leading-h1: 0.75;
+  --tracking-h1: -0.03em;
 
   /* H2 — subtitle. Lighter and looser than H1.                              */
-  --size-h2: 6rem;             --size-h2-mobile: 2.5rem;
+  --size-h2: 6rem;
+  --size-h2-mobile: 2.5rem;
   --weight-h2: 600;
-  --leading-h2: 0.86;          --tracking-h2: -0.02em;
+  --leading-h2: 0.86;
+  --tracking-h2: -0.02em;
 
   /* H3 — section heading.                                                   */
-  --size-h3: 3rem;             --size-h3-mobile: 1.75rem;
+  --size-h3: 3rem;
+  --size-h3-mobile: 1.75rem;
   --weight-h3: 600;
-  --leading-h3: 0.95;          --tracking-h3: -0.01em;
+  --leading-h3: 0.95;
+  --tracking-h3: -0.01em;
 
   /* H4 — small heading. Near-neutral tracking.                              */
-  --size-h4: 1.75rem;          --size-h4-mobile: 1.25rem;
+  --size-h4: 1.75rem;
+  --size-h4-mobile: 1.25rem;
   --weight-h4: 600;
-  --leading-h4: 1.1;           --tracking-h4: -0.005em;
+  --leading-h4: 1.1;
+  --tracking-h4: -0.005em;
 
   /* Standfirst · SM — the in-column lede that sits beside a title.          */
-  --size-standfirst: 1.5rem;   --size-standfirst-mobile: 1.25rem;
+  --size-standfirst: 1.5rem;
+  --size-standfirst-mobile: 1.25rem;
   --weight-standfirst: 600;
-  --leading-standfirst: 1.35;  --tracking-standfirst: 0;
+  --leading-standfirst: 1.35;
+  --tracking-standfirst: 0;
 
   /* Label — small; tracked slightly OPEN for legibility.                    */
-  --size-label: 0.875rem;      --size-label-mobile: 0.75rem;
-  --leading-label: 1.4;        --tracking-label: 0.02em;
+  --size-label: 0.875rem;
+  --size-label-mobile: 0.75rem;
+  --leading-label: 1.4;
+  --tracking-label: 0.02em;
 
   /* Body / legal                                                            */
-  --size-body: 0.875rem;       --size-body-mobile: 0.75rem;
-  --leading-body: 1.5;         --tracking-body: 0;
+  --size-body: 0.875rem;
+  --size-body-mobile: 0.75rem;
+  --leading-body: 1.5;
+  --tracking-body: 0;
   --size-legal: 10px;
   /* *h1: this style is the page's primary heading and should be an <h1>.
      The live site currently ships it as <h2> (src/components/title.tsx). */
@@ -112,13 +134,14 @@
      uppercase. That opposition is what makes it read as a label and not a
      heading. Positive tracking is required — uppercase at small sizes needs
      the air, and it is the only place in this system tracking goes open.   */
-  --eyebrow-size: 0.8rem;        --eyebrow-size-mobile: 0.75rem;
+  --eyebrow-size: 0.8rem;
+  --eyebrow-size-mobile: 0.75rem;
   --eyebrow-weight: 600;
-  --eyebrow-tracking: 0.28em;    /* the counterpoint to --tracking-h1        */
+  --eyebrow-tracking: 0.28em; /* the counterpoint to --tracking-h1        */
   --eyebrow-transform: uppercase;
   --eyebrow-color: var(--color-accent);
   --eyebrow-color-muted: var(--color-text-muted);
-  --eyebrow-gap: 18px;           /* eyebrow → the heading beneath it         */
+  --eyebrow-gap: 18px; /* eyebrow → the heading beneath it         */
 
   /* --- The STATEMENT treatment -------------------------------------------
      ONE type treatment, TWO variants. Display family at light weight, set
@@ -130,13 +153,16 @@
                              sets off a claim inside running content.
 
      The rule is the only difference. Never use both in one view.           */
-  --statement-size: 2rem;        --statement-size-mobile: 1.5rem;
-  --statement-weight: 300;       --statement-weight-emphasis: 600;
-  --statement-leading: 1.15;     --statement-tracking: -0.01em;
+  --statement-size: 2rem;
+  --statement-size-mobile: 1.5rem;
+  --statement-weight: 300;
+  --statement-weight-emphasis: 600;
+  --statement-leading: 1.15;
+  --statement-tracking: -0.01em;
   --statement-max-width: 52ch;
-  --statement-rule-width: 2px;                      /* ruled variant only    */
+  --statement-rule-width: 2px; /* ruled variant only    */
   --statement-rule-color: var(--color-accent);
-  --statement-gap: 24px;                            /* rule → text           */
+  --statement-gap: 24px; /* rule → text           */
 
   /* Legacy aliases — the pull statement's original names.                   */
   --pull-size: var(--statement-size);
@@ -158,33 +184,44 @@
   --wrap-body: pretty;
 
   /* --- Spacing (site source names kept) ---------------------------------- */
-  --spacer-sm: 8px;   --spacer-md: 32px;  --spacer: 40px;
-  --gutter-sm: 24px;  --gutter: 50px;     --gutter-md: 70px;
-  --gutter-lg: 112px; --gutter-xl: 140px;
+  --spacer-sm: 8px;
+  --spacer-md: 32px;
+  --spacer: 40px;
+  --gutter-sm: 24px;
+  --gutter: 50px;
+  --gutter-md: 70px;
+  --gutter-lg: 112px;
+  --gutter-xl: 140px;
 
   /* Layout conventions */
-  --container-inset: 80%;        /* content column: mx-auto max-w-[80%]        */
-  --stack-gap: 24px;             /* blurb stack (gap-6 → lg 32px)              */
+  --container-inset: 80%; /* content column: mx-auto max-w-[80%] md:max-w-[90%] xl:max-w-[85%] 2xl:max-w-[60%]        */
+  --stack-gap: 24px; /* blurb stack (gap-6 → lg 32px)              */
   --stack-gap-lg: 32px;
-  --section-gap: 64px;           /* title↔content (gap-16 → lg 80px)           */
+  --section-gap: 64px; /* title↔content (gap-16 → lg 80px)           */
   --section-gap-lg: 80px;
-  --section-pad-top: 96px;       /* pt-24                                      */
+  --section-pad-top: 96px; /* pt-24                                      */
 
   /* --- Radii ------------------------------------------------------------- */
-  --radius-pill: 9999px;   --radius-3xl: 24px;   --radius-bar: 8px;   --radius-scrollbar: 3px;
+  --radius-pill: 9999px;
+  --radius-3xl: 24px;
+  --radius-bar: 8px;
+  --radius-scrollbar: 3px;
 
   /* --- Effects ----------------------------------------------------------- */
   --glow-accent:
     0 0 8px 2px rgba(var(--color-accent-rgb), 0.6),
     0 0 16px 4px rgba(var(--color-accent-rgb), 0.3);
-  --shadow-glass: 0 25px 50px -12px rgba(0,0,0,0.2);
-  --blur-glass: 24px;            /* backdrop-blur-xl (nav)                     */
-  --blur-glass-sm: 4px;          /* backdrop-blur-sm (chevron)                */
+  --shadow-glass: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+  --blur-glass: 24px; /* backdrop-blur-xl (nav)                     */
+  --blur-glass-sm: 4px; /* backdrop-blur-sm (chevron)                */
 
   /* --- Motion ------------------------------------------------------------ */
-  --ease: cubic-bezier(0, 0, 0.2, 1);   /* easeOut                            */
-  --dur-fade: 800ms;   --delay-fade: 600ms;
-  --dur-blurb: 500ms;  --stagger: 200ms;   --dur-hover: 300ms;
+  --ease: cubic-bezier(0, 0, 0.2, 1); /* easeOut                            */
+  --dur-fade: 800ms;
+  --delay-fade: 600ms;
+  --dur-blurb: 500ms;
+  --stagger: 200ms;
+  --dur-hover: 300ms;
 }
 
 /* ============================================================================
@@ -193,13 +230,26 @@
    uses pretty.
    ============================================================================ */
 
-h1, h2, h3, h4, h5, h6,
-.statement, .pull, .standfirst, .label, blockquote, figcaption {
-  text-wrap: var(--wrap-display);        /* Tailwind: text-balance            */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.statement,
+.pull,
+.standfirst,
+.label,
+blockquote,
+figcaption {
+  text-wrap: var(--wrap-display); /* Tailwind: text-balance            */
 }
 
-p, li, dd, .body {
-  text-wrap: var(--wrap-body);           /* Tailwind: text-pretty             */
+p,
+li,
+dd,
+.body {
+  text-wrap: var(--wrap-body); /* Tailwind: text-pretty             */
 }
 
 /* Eyebrow ------------------------------------------------------------------ */
@@ -214,13 +264,20 @@ p, li, dd, .body {
   margin-bottom: var(--eyebrow-gap);
   text-wrap: var(--wrap-display);
 }
-.eyebrow--muted { color: var(--eyebrow-color-muted); }
+.eyebrow--muted {
+  color: var(--eyebrow-color-muted);
+}
 /* Letter-spacing adds trailing space after the last glyph. That is invisible
    when left-aligned, but throws off optical centering — compensate: */
-.eyebrow--centered { text-align: center; margin-right: calc(var(--eyebrow-tracking) * -1); }
+.eyebrow--centered {
+  text-align: center;
+  margin-right: calc(var(--eyebrow-tracking) * -1);
+}
 
 @media (max-width: 768px) {
-  .eyebrow { font-size: var(--eyebrow-size-mobile); }
+  .eyebrow {
+    font-size: var(--eyebrow-size-mobile);
+  }
 }
 
 /* The statement treatment — two variants ----------------------------------- */
@@ -238,11 +295,14 @@ p, li, dd, .body {
   font-weight: var(--statement-weight-emphasis);
   color: var(--color-accent);
 }
-.statement--ruled {                       /* the pull statement              */
+.statement--ruled {
+  /* the pull statement              */
   border-left: var(--statement-rule-width) solid var(--statement-rule-color);
   padding-left: var(--statement-gap);
 }
 
 @media (max-width: 768px) {
-  .statement { font-size: var(--statement-size-mobile); }
+  .statement {
+    font-size: var(--statement-size-mobile);
+  }
 }

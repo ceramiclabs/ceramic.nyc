@@ -1,5 +1,6 @@
 import { CaseStudySection } from "./case-study-section"
-import { Blurb, Blurbs, Standfirst } from "./blurbs"
+import { Blurb, Blurbs } from "./blurbs"
+import { Standfirst } from "./standfirst"
 import { Subtitle, Title } from "./title"
 import rendevuBackground from "../assets/rendevu-card-design.png"
 
@@ -24,7 +25,7 @@ export function RendevuCaseStudy() {
     >
       <div id="TEST" />
       <Blurbs>
-        <Standfirst className="!max-w-[550px]">
+        <Standfirst className="!max-w-[460px]">
           <span className="!font-normal" style={{ color: HIGHLIGHT_COLOR }}>
             We transformed complexity into a refined, end-to-end app that
             simplifies booking, documentation, photography, and care delivery.

@@ -17,8 +17,8 @@ export function App() {
       <SectionNav />
       <ChevronButton />
       <main>
-        <IntroSection />
         <ProductSection />
+        <IntroSection />
         <ArenaCaseStudy />
         <RendevuCaseStudy />
         <ContactSection />

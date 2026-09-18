@@ -185,10 +185,6 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: underline;
-}
-
 footer div {
   font-size: 10px;
 }
