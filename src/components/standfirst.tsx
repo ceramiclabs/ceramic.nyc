@@ -12,13 +12,11 @@ export function Standfirst({
   children,
 }: StandfirstProps) {
   return (
-    <div
-      className={cx("flex max-w-lg pr-10 lg:pr-0 lg:max-w-[510px]", className)}
-    >
+    <div className={cx("flex w-full max-w-xs lg:max-w-sm", className)}>
       <span
         className={cx(
-          "text-white/80 leading-normal text-balance text-xl font-display font-thin",
-          "lg:text-2xl ",
+          "text-white/80 leading-normal text-pretty text-xl font-display font-thin",
+          "lg:text-2xl lg:max-w-lg",
           textClassName,
         )}
       >

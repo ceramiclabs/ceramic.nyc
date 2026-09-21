@@ -194,7 +194,6 @@
   --gutter-xl: 140px;
 
   /* Layout conventions */
-  --container-inset: 80%; /* content column: mx-auto max-w-[80%] md:max-w-[90%] xl:max-w-[85%] 2xl:max-w-[60%]        */
   --stack-gap: 24px; /* blurb stack (gap-6 → lg 32px)              */
   --stack-gap-lg: 32px;
   --section-gap: 64px; /* title↔content (gap-16 → lg 80px)           */

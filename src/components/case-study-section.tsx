@@ -3,6 +3,7 @@ import * as React from "react"
 import { motion } from "framer-motion"
 import cx from "clsx"
 import { Noise } from "./noise"
+import { Container } from "./container"
 
 interface Props {
   id?: string
@@ -27,11 +28,7 @@ export function CaseStudySection({
     <section
       id={id}
       className={cx(
-        "relative min-h-screen py-32",
-        "flex flex-col",
-
-        // TEMP until we get more content in - remove after
-        "!pt-24 lg:!pt-0",
+        "relative min-h-screen flex justify-start items-center",
         className,
       )}
     >
@@ -39,10 +36,9 @@ export function CaseStudySection({
 
       <Noise />
 
-      <div
+      <Container
         className={cx(
           "relative z-10 flex flex-1 flex-col gap-8 justify-center",
-          "mx-auto max-w-[80%] md:max-w-[90%] xl:max-w-[85%] 2xl:max-w-[60%] w-full",
           "lg:flex-row lg:items-start lg:gap-20",
 
           // TEMP until we get more content in - remove after
@@ -55,11 +51,11 @@ export function CaseStudySection({
         </div>
 
         {children && (
-          <div className={cx("lg:flex-1", "overflow-visible pr-2", "lg:mt-8")}>
+          <div className="overflow-visible pr-2 lg:mt-8 lg:flex-1">
             {children}
           </div>
         )}
-      </div>
+      </Container>
 
       {bottomContent && (
         <div className="relative z-10 w-full -mt-6">

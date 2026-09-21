@@ -51,8 +51,8 @@ export function Blurb({
   return (
     <div
       className={cx(
-        "text-xs gap-2 flex flex-col max-w-64",
-        "lg:text-sm lg:max-w-xs",
+        "text-xs gap-2 flex flex-col w-full max-w-sm",
+        "lg:text-sm",
         className,
       )}
     >

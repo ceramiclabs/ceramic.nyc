@@ -63,7 +63,7 @@ This is a modern frontend website built with Vite and Tailwind CSS. The project 
   - Example:
     ```tsx
     className={cx(
-      "relative z-10 mx-auto max-w-[80%] md:max-w-[90%] xl:max-w-[85%] 2xl:max-w-[60%] flex flex-col",
+      "relative z-10 mx-auto w-[70%] flex flex-col",
       "lg:flex-row lg:items-center lg:gap-16 xl:gap-24"
     )}
     ```

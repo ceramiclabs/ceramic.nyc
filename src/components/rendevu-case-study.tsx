@@ -25,13 +25,13 @@ export function RendevuCaseStudy() {
     >
       <div id="TEST" />
       <Blurbs>
-        <Standfirst className="!max-w-[460px]">
+        <Standfirst className="lg:!max-w-md">
           <span className="!font-normal" style={{ color: HIGHLIGHT_COLOR }}>
             We transformed complexity into a refined, end-to-end app that
             simplifies booking, documentation, photography, and care delivery.
           </span>
         </Standfirst>
-        <Blurb className="lg:!max-w-[443px]">
+        <Blurb>
           Ceramic designed a MedSpa platform from the ground up, starting with
           deep, onsite discovery across every role - from front desk to
           practitioners and aestheticians. We mapped the real chaos of daily
@@ -39,7 +39,7 @@ export function RendevuCaseStudy() {
           inconsistent photography, and time-intensive charting - and translated
           it into an elegant, unified application.
         </Blurb>
-        <Blurb className="lg:!max-w-[410px]" textClassName="font-semibold">
+        <Blurb textClassName="font-semibold">
           The result is software that brings order, speed and consistency to a
           notoriously unpredictable workflow.
         </Blurb>

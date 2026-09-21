@@ -11,10 +11,9 @@ export function ProductSection() {
         <span className="blue">Human-centered.</span>
       </Title>
       <Standfirst>
-        <span className="blue font-semibold">
-          We design systems and experiences that amplify human capability
-        </span>
-        , informed by real users and measured by business impact. We fuse
+        We design systems and experiences that{" "}
+        <span className="blue font-semibold">amplify human capability</span>,
+        informed by real users and measured by business impact. We fuse
         AI-native research, design, and execution with old-school craft.
       </Standfirst>
     </ScrollSection>
@@ -49,7 +48,7 @@ export function ContactSection() {
           <a href="mailto:hello@ceramic.nyc">hello@ceramic.nyc</a>
         </span>
       </Title>
-      <Standfirst>
+      <Standfirst className="!max-w-sm lg:!max-w-md">
         <span className="blue font-semibold">
           Founder-grade product and engineering
         </span>

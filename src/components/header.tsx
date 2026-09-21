@@ -2,6 +2,7 @@ import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import cx from "clsx"
 import logoSvg from "../assets/ceramic-logo.svg"
+import { Container } from "./container"
 
 function scrollToCaseStudies() {
   document.getElementById("arena")?.scrollIntoView({ behavior: "smooth" })
@@ -10,7 +11,7 @@ function scrollToCaseStudies() {
 export function Header() {
   return (
     <header className="fixed w-full top-0 left-0 z-[101] py-6">
-      <div className="mx-auto max-w-[80%] md:max-w-[90%] xl:max-w-[85%] 2xl:max-w-[60%] flex items-center justify-between">
+      <Container className="flex items-center justify-between">
         <div className="logo">
           <img src={logoSvg} alt="Logo" className="w-20 relative top-0.5" />
         </div>
@@ -80,7 +81,7 @@ export function Header() {
             </span>
           </motion.a>
         </motion.nav>
-      </div>
+      </Container>
     </header>
   )
 }
