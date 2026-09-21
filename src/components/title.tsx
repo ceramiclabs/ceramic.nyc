@@ -48,7 +48,7 @@ export function Subtitle({ children, className, ...attrs }: Props) {
       className={cx(
         "leading-[.9em] tracking-[-0.1rem] font-display font-bold text-[2.5rem]",
         "lg:text-[6rem] lg:tracking-[-0.25rem] lg:leading-[.8em]",
-        "border-b border-stone-700 pb-9 mt-4",
+        "border-b border-stone-700 pb-7 lg:pb-9 mt-4",
         "[&>span]:inline-block",
         className,
       )}

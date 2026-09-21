@@ -38,7 +38,7 @@ export function CaseStudySection({
 
       <Container
         className={cx(
-          "relative z-10 flex flex-1 flex-col gap-8 justify-center",
+          "relative z-10 flex flex-1 flex-col gap-6 lg:gap-8 justify-center",
           "lg:flex-row lg:items-start lg:gap-20",
 
           // TEMP until we get more content in - remove after

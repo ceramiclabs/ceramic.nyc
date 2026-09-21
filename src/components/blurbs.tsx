@@ -66,7 +66,7 @@ export function Blurb({
       )}
       <span
         className={cx(
-          "font-light text-white/80 leading-normal text-balance",
+          "font-light text-white/80 leading-normal text-pretty",
           textClassName,
         )}
       >

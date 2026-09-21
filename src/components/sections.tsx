@@ -1,6 +1,7 @@
 import { ScrollSection } from "../components/scroll-section"
 import { Title } from "../components/title"
 import { Standfirst } from "../components/standfirst"
+import { Blurbs } from "./blurbs"
 
 export function ProductSection() {
   return (
@@ -10,12 +11,14 @@ export function ProductSection() {
         <span>AI-native.</span>
         <span className="blue">Human-centered.</span>
       </Title>
-      <Standfirst>
-        We design systems and experiences that{" "}
-        <span className="blue font-semibold">amplify human capability</span>,
-        informed by real users and measured by business impact. We fuse
-        AI-native research, design, and execution with old-school craft.
-      </Standfirst>
+      <Blurbs>
+        <Standfirst>
+          We design systems and experiences that{" "}
+          <span className="blue font-semibold">amplify human capability</span>,
+          informed by real users and measured by business impact. We fuse
+          AI-native research, design, and execution with old-school craft.
+        </Standfirst>
+      </Blurbs>
     </ScrollSection>
   )
 }
@@ -28,12 +31,16 @@ export function IntroSection() {
         <span>Forward-thinking.</span>
         <span>Exacting.</span>
       </Title>
-      <Standfirst>
-        Perfection doesn&rsquo;t exist. The work is to{" "}
-        <span className="blue font-semibold">continuously refine and ship</span>
-        . We apply creativity to every aspect of our work and continuously
-        sharpen our craft.
-      </Standfirst>
+      <Blurbs>
+        <Standfirst>
+          Perfection doesn&rsquo;t exist. The work is to{" "}
+          <span className="blue font-semibold">
+            continuously refine and ship
+          </span>
+          . We apply creativity to every aspect of our work and continuously
+          sharpen our craft.
+        </Standfirst>
+      </Blurbs>
     </ScrollSection>
   )
 }
@@ -48,14 +55,16 @@ export function ContactSection() {
           <a href="mailto:hello@ceramic.nyc">hello@ceramic.nyc</a>
         </span>
       </Title>
-      <Standfirst className="!max-w-sm lg:!max-w-md">
-        <span className="blue font-semibold">
-          Founder-grade product and engineering
-        </span>
-        , embedded until the job is done. From first principles to production,
-        we work the problem end to end. We move fast, ship what matters, and
-        keep moving.
-      </Standfirst>
+      <Blurbs>
+        <Standfirst className="!max-w-sm lg:!max-w-md">
+          <span className="blue font-semibold">
+            Founder-grade product and engineering
+          </span>
+          , embedded until the job is done. From first principles to production,
+          we work the problem end to end. We move fast, ship what matters, and
+          keep moving.
+        </Standfirst>
+      </Blurbs>
     </ScrollSection>
   )
 }

@@ -13,7 +13,7 @@ export function Header() {
     <header className="fixed w-full top-0 left-0 z-[101] py-6">
       <Container className="flex items-center justify-between">
         <div className="logo">
-          <img src={logoSvg} alt="Logo" className="w-20 relative top-0.5" />
+          <img src={logoSvg} alt="Logo" className="w-20 relative -top-1" />
         </div>
 
         <motion.nav
