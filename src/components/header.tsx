@@ -1,6 +1,7 @@
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import cx from "clsx"
+import { track } from "@amplitude/unified"
 import logoSvg from "../assets/ceramic-logo.svg"
 import { Container } from "./container"
 
@@ -49,6 +50,7 @@ export function Header() {
 
           <motion.a
             href="mailto:hello@ceramic.nyc"
+            onClick={() => track("Contact Clicked")}
             className={cx(
               "group flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs",
               "font-medium bg-white/5 backdrop-blur-xl border border-white/10",
