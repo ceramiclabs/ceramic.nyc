@@ -29,6 +29,7 @@
   },
   "packageManager": "pnpm@10.12.1",
   "dependencies": {
+    "@amplitude/unified": "^1.1.43",
     "clsx": "^2.1.1",
     "framer-motion": "^12.24.10",
     "lucide-react": "^0.562.0",

@@ -4,3 +4,4 @@ dist
 .playwright-mcp/
 *.swp
 tsconfig.tsbuildinfo
+.env.local
