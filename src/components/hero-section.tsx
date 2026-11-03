@@ -4,12 +4,7 @@ import { useFontsReady } from "../hooks/use-fonts-ready"
 import { SplitSection } from "./split-section"
 import { Standfirst } from "./standfirst"
 import { BookIntroCallButton, TextAction } from "./cta"
-import { LineArt, type LineArtVariant } from "./line-art"
-
-// TEMP: preview hero line art via ?hero=<variant>
-const heroArt = new URLSearchParams(window.location.search).get(
-  "hero",
-) as LineArtVariant | null
+import { LineArt } from "./line-art"
 
 export function HeroSection() {
   // Hold the entrance until Encode Sans has loaded so the fallback→webfont
@@ -23,7 +18,7 @@ export function HeroSection() {
       size="primary"
       trigger="mount"
       ready={fontsReady}
-      background={<LineArt variant={heroArt ?? "capacitorFade"} />}
+      background={<LineArt variant="capacitor" />}
       lines={[
         { text: "We design and" },
         { text: "ship AI products" },
