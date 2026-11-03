@@ -1,25 +1,33 @@
+import { ArrowUpRight } from "lucide-react"
+import { track } from "@amplitude/unified"
 import { ScrollSection } from "../components/scroll-section"
 import { Title } from "../components/title"
 import { Standfirst } from "../components/standfirst"
 import { Blurbs } from "./blurbs"
+import { SplitSection } from "./split-section"
+import { LineArt } from "./line-art"
+import { BookIntroCallButton, CONTACT_EMAIL, TextAction } from "./cta"
+import { Nowrap } from "./nowrap"
 
 export function ProductSection() {
   return (
-    <ScrollSection id="product">
-      <Title>
-        <span>Product-forward.</span>
-        <span>AI-native.</span>
-        <span className="blue">Human-centered.</span>
-      </Title>
-      <Blurbs>
-        <Standfirst>
-          We design systems and experiences that{" "}
-          <span className="blue font-semibold">amplify human capability</span>,
-          informed by real users and measured by business impact. We fuse
-          AI-native research, design, and execution with old-school craft.
+    <SplitSection
+      id="product"
+      background={<LineArt variant="converge" />}
+      lines={[
+        { text: "AI-native." },
+        { text: "Product-forward." },
+        { text: "Human-centered.", className: "blue" },
+      ]}
+      aside={
+        <Standfirst className="lg:max-w-lg xl:max-w-md">
+          We design systems and experiences that amplify human capability,
+          informed by real users and measured by business impact. We fuse{" "}
+          <Nowrap>AI-native</Nowrap> research, design, and execution with{" "}
+          <Nowrap>old-school</Nowrap> craft.
         </Standfirst>
-      </Blurbs>
-    </ScrollSection>
+      }
+    />
   )
 }
 
@@ -47,24 +55,31 @@ export function IntroSection() {
 
 export function ContactSection() {
   return (
-    <ScrollSection id="contact">
-      <Title>
-        <span>Your</span>
-        <span className="blue">force multiplier.</span>
-        <span className="smaller">
-          <a href="mailto:hello@ceramic.nyc">hello@ceramic.nyc</a>
-        </span>
-      </Title>
-      <Blurbs>
-        <Standfirst className="!max-w-sm lg:!max-w-md">
-          <span className="blue font-semibold">
-            Founder-grade product and engineering
-          </span>
-          , embedded until the job is done. From first principles to production,
-          we work the problem end to end. We move fast, ship what matters, and
-          keep moving.
+    <SplitSection
+      id="contact"
+      lines={[
+        { text: "We’re your" },
+        { text: "force multiplier.", className: "blue" },
+      ]}
+      aside={
+        <Standfirst className="lg:max-w-lg xl:max-w-md">
+          Founder-grade product and engineering, embedded until the job is done.
+          Together we can take any idea from conception to delivery and beyond.
         </Standfirst>
-      </Blurbs>
-    </ScrollSection>
+      }
+      actions={
+        <>
+          <BookIntroCallButton location="contact" />
+          <TextAction
+            href={`mailto:${CONTACT_EMAIL}`}
+            icon={ArrowUpRight}
+            iconHoverClassName="group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            onClick={() => track("Contact Clicked", { location: "contact" })}
+          >
+            {CONTACT_EMAIL}
+          </TextAction>
+        </>
+      }
+    />
   )
 }

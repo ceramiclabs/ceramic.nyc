@@ -6,7 +6,9 @@ import "./style.css"
 
 const amplitudeKey = import.meta.env.VITE_AMPLITUDE_API_KEY
 if (!amplitudeKey) {
-  console.error("[amplitude] VITE_AMPLITUDE_API_KEY is not set — no events will be sent")
+  console.error(
+    "[amplitude] VITE_AMPLITUDE_API_KEY is not set — no events will be sent",
+  )
 } else {
   initAll(amplitudeKey, {
     serverZone: "US",

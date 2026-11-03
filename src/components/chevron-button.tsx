@@ -3,21 +3,31 @@ import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import cx from "clsx"
 
-const SECTION_IDS = ["product", "intro", "alside", "arena", "rendevu", "contact"]
+const SECTION_IDS = [
+  "hero",
+  "product",
+  "intro",
+  "alside",
+  "arena",
+  "rendevu",
+  "contact",
+]
 
 export function ChevronButton() {
   const [isHovered, setIsHovered] = useState(false)
   const [isAtEnd, setIsAtEnd] = useState(false)
 
   useEffect(() => {
-    const lastSection = document.getElementById(SECTION_IDS[SECTION_IDS.length - 1])
+    const lastSection = document.getElementById(
+      SECTION_IDS[SECTION_IDS.length - 1],
+    )
     if (!lastSection) return
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsAtEnd(entry.isIntersecting)
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     )
 
     observer.observe(lastSection)
@@ -59,8 +69,8 @@ export function ChevronButton() {
       <motion.div
         className={cx(
           "w-11 h-11 rounded-full flex items-center justify-center",
-          "bg-white/5 backdrop-blur-sm border border-white/10",
-          "transition-colors"
+          "bg-white/5 backdrop-blur-xs border border-white/10",
+          "transition-colors",
         )}
         animate={{
           backgroundColor: isHovered

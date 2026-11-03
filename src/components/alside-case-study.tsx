@@ -11,7 +11,7 @@ export function AlsideCaseStudy() {
     <CaseStudySection
       id="alside"
       backgroundImage=""
-      className="lg:!pt-32"
+      className="lg:pt-32!"
       title={
         <Title style={{ color: HIGHLIGHT_COLOR }}>
           <span>Alside</span>
@@ -26,7 +26,7 @@ export function AlsideCaseStudy() {
       bottomContent={<SalesChart fill={HIGHLIGHT_COLOR} />}
     >
       <Blurbs>
-        <Standfirst className="lg:!max-w-[563px]">
+        <Standfirst className="lg:max-w-[563px]!">
           Legacy systems, manual processes, bubble gum and tape - and a lot of
           spreadsheets. We became a student of their organization, interviewing
           stakeholders and building trust with honestly, realism, and a
@@ -38,7 +38,7 @@ export function AlsideCaseStudy() {
         <Blurb
           title="Custom ontology &amp; OSDK"
           highlightColor={HIGHLIGHT_COLOR}
-          className="lg:!max-w-[452px]"
+          className="lg:max-w-[452px]!"
         >
           We built a dedicated ontology, with cohesive data designed to give
           real people the information they need. Where complexity arose, we used
@@ -49,7 +49,7 @@ export function AlsideCaseStudy() {
         <Blurb
           title="Rethinking &amp; digitizing processes"
           highlightColor={HIGHLIGHT_COLOR}
-          className="lg:!max-w-[452px]"
+          className="lg:max-w-[452px]!"
         >
           Leveraging our UI toolkit,{" "}
           <span className="font-semibold blue">Glaze</span>, we built a custom

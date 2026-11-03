@@ -13,8 +13,9 @@ export function Title({ children, className, ...attrs }: Props) {
   return (
     <h2
       className={cx(
-        "leading-[.8em] tracking-[-0.3rem] font-display font-bold text-[5rem]",
-        "lg:text-[10rem] lg:flex-shrink-0 lg:max-w-[60%] lg:leading-[.75em]",
+        // Same scale as the hero headline (hero-section.tsx)
+        "font-display font-bold leading-[1em] tracking-[-0.03em] text-[11vw]",
+        "lg:shrink-0 lg:max-w-[60%] xl:text-[6.5rem] 2xl:text-[8rem]",
         "[&>span]:inline-block",
         className,
       )}
@@ -46,8 +47,8 @@ export function Subtitle({ children, className, ...attrs }: Props) {
   return (
     <h3
       className={cx(
-        "leading-[.9em] tracking-[-0.1rem] font-display font-bold text-[2.5rem]",
-        "lg:text-[6rem] lg:tracking-[-0.25rem] lg:leading-[.8em]",
+        "leading-[.95em] tracking-[-0.1rem] font-display font-bold text-[2.5rem]",
+        "lg:text-[6rem] lg:tracking-[-0.25rem] lg:leading-[.9em]",
         "border-b border-stone-700 pb-7 lg:pb-9 mt-4",
         "[&>span]:inline-block",
         className,

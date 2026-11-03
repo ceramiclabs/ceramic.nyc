@@ -5,8 +5,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Development Commands
 
 - `pnpm dev` - Start the development server with hot reloading on port 3000
-- `pnpm build` - Build the project for production
+- `pnpm build` - Check formatting (`prettier --check .`), type check, then build for production
 - `pnpm preview` - Preview the production build locally
+- `pnpm format` - Format the repo with Prettier (`pnpm format:check` to only check)
+- `pnpm lint` - ESLint
+
+After editing code, run `pnpm format` (or `pnpm exec prettier --write <files>`),
+`pnpm exec tsc --noEmit -p .`, and `pnpm lint` before reporting the work as done.
+Unformatted code fails `pnpm build`.
 
 ## Project Architecture
 

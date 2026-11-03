@@ -1,12 +1,40 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
+@theme {
+  --font-sans: "Roboto", Helvetica, sans-serif;
+  --font-display: "Encode Sans", sans-serif;
+
   --color-blue-black: #0d1212;
   --color-light-blue: #add8e6;
   --color-grey-300: #444;
 
+  --animate-fadein: fadein 800ms forwards 600ms 1;
+
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+/*
+  Tailwind v4 changed the default border color to `currentcolor`. Keep the
+  v3 default so existing `border` utilities without a color look the same.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+:root {
   --spacer-sm: 8px;
   --spacer-md: 32px;
   --spacer: 40px;
@@ -19,26 +47,6 @@
   --container-width: calc(100% - (var(--gutter-sm) * 2));
   --max-width: calc(var(--screen-xl-min) - (var(--gutter) * 2));
   --gutter-auto: calc((100vw - var(--max-width)) / 2);
-}
-
-@theme {
-  --font-sans: "Roboto", Helvetica, sans-serif;
-  --font-display: "Encode Sans Condensed", sans-serif;
-
-  --color-blue-black: var(--color-blue-black);
-  --color-light-blue: var(--color-light-blue);
-  --color-grey-300: var(--color-grey-300);
-
-  --animate-fadein: fadein 800ms forwards 600ms 1;
-
-  @keyframes fadein {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
 }
 
 @keyframes fade-in {
@@ -90,42 +98,59 @@
   animation: 800ms forwards fade-in 600ms 1;
 }
 
-.encode-extrabold {
-  font-family: "Encode Sans Condensed", sans-serif;
-  font-weight: 800;
-  font-style: normal;
-}
+/*
+  Element-level defaults live in the base layer. Tailwind v4 puts utilities in
+  @layer utilities, and unlayered CSS would otherwise beat them (e.g. `header`
+  position overriding `fixed`, `*` margins overriding `mt-*`).
+*/
+@layer base {
+  html,
+  body {
+    @apply bg-black dark:bg-black font-sans;
 
-html,
-body {
-  @apply bg-black dark:bg-black font-sans;
-
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+    @media (prefers-color-scheme: dark) {
+      color-scheme: dark;
+    }
   }
-}
 
-html {
-  scroll-behavior: smooth;
-}
+  html {
+    scroll-behavior: smooth;
+  }
 
-body {
-  background-color: var(--color-blue-black);
-  background-image: linear-gradient(to bottom, #000, #111);
-  color: white;
-}
+  /* Entrance animations start offset to the right (x: 24–50px); clip so
+     not-yet-revealed slides can't make the page pan sideways on mobile.
+     `clip` (unlike `hidden`) doesn't create a scroll container. */
+  html,
+  body {
+    overflow-x: clip;
+  }
 
-header {
-  z-index: 101;
-  position: relative;
-}
+  body {
+    background-color: var(--color-blue-black);
+    background-image: linear-gradient(to bottom, #000, #111);
+    color: white;
+  }
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-  margin-block-start: 0;
-  margin-block-end: 0;
+  header {
+    z-index: 101;
+    position: relative;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  footer div {
+    font-size: 10px;
+  }
 }
 
 .logo {
@@ -179,14 +204,6 @@ header {
   font-size: 0.2em;
   font-weight: 500;
   letter-spacing: 0;
-}
-
-a {
-  text-decoration: none;
-}
-
-footer div {
-  font-size: 10px;
 }
 
 /* Custom scrollbar for blurbs */

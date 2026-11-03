@@ -1,0 +1,9 @@
+dist
+node_modules
+pnpm-lock.yaml
+archive
+Ceramic-Brand
+public
+.playwright-mcp
+.wrangler
+.claude

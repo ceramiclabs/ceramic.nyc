@@ -42,7 +42,7 @@ export function CaseStudySection({
           "lg:flex-row lg:items-start lg:gap-20",
 
           // TEMP until we get more content in - remove after
-          "lg:!items-center",
+          "lg:items-center!",
         )}
       >
         <div className="lg:flex-1">
@@ -51,7 +51,7 @@ export function CaseStudySection({
         </div>
 
         {children && (
-          <div className="overflow-visible pr-2 lg:mt-8 lg:flex-1">
+          <div className="overflow-visible lg:mt-8 lg:flex-1 lg:pr-2">
             {children}
           </div>
         )}

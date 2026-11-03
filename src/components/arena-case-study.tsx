@@ -1,6 +1,7 @@
 import { CaseStudySection } from "./case-study-section"
 import { Blurb, Blurbs } from "./blurbs"
 import { Standfirst } from "./standfirst"
+import { Nowrap } from "./nowrap"
 import { Subtitle, Title } from "./title"
 import arenaBackground from "../assets/arena-kareem-game-play.png"
 
@@ -26,25 +27,33 @@ export function ArenaCaseStudy() {
       bottomContent={null}
     >
       <Blurbs>
-        <Standfirst className="lg:!max-w-lg">
+        {/* Hidden for now — may come back
+        <Standfirst className="lg:max-w-lg xl:max-w-md">
           <span style={{ color: HIGHLIGHT_COLOR }}>
             Ceramic partnered with a Manhattan-based AI client for what began as
             frontend consulting and quickly evolved into a year-long, onsite
             collaboration.
           </span>
         </Standfirst>
-        <Blurb>
-          Operating as embedded tech leads, we helped conceive, design, and ship
-          four AI-powered applications, each tailored to a specific customer and
-          delivered on aggressive timelines. We worked shoulder-to-shoulder with
-          internal teams and end users, moving from whiteboard to prototype to
-          production in tight, iterative cycles.
-        </Blurb>
-        <Blurb>
-          Our team built across the full stack - spanning React, Python, OpenAI
-          integrations, video and audio systems, and computer vision - all while
-          driving rapid experimentation, real-world feedback, and continuous
-          iteration.
+        */}
+        <Standfirst
+          className="lg:max-w-lg xl:max-w-md"
+          // Heavier than the default thin so colored text holds up on images
+          textClassName="font-light!"
+        >
+          <span style={{ color: HIGHLIGHT_COLOR }}>
+            Operating as embedded tech leads, we helped conceive, design, and
+            ship four <Nowrap>AI-powered</Nowrap> applications, each tailored to
+            a specific customer and delivered on aggressive timelines.
+          </span>
+        </Standfirst>
+        <Blurb className="lg:max-w-lg xl:max-w-md">
+          We worked <Nowrap>shoulder-to-shoulder</Nowrap> with internal teams
+          and end users, moving from whiteboard to prototype to production in
+          tight, iterative cycles. Our team built across the full stack,
+          including React, Python, OpenAI integrations, video and audio systems,
+          and computer vision. We drove rapid experimentation and continuous
+          iteration, grounded in <Nowrap>real-world</Nowrap> feedback.
         </Blurb>
       </Blurbs>
     </CaseStudySection>

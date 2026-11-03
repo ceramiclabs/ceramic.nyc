@@ -51,14 +51,14 @@ export function Blurb({
   return (
     <div
       className={cx(
-        "text-xs gap-2 flex flex-col w-full max-w-sm",
-        "lg:text-sm",
+        "text-sm gap-2 flex flex-col w-full max-w-xl lg:max-w-sm",
+        "lg:text-base",
         className,
       )}
     >
       {title && (
         <span
-          className="font-display font-semibold text-xs lg:text-sm"
+          className="font-display font-semibold text-sm lg:text-base"
           style={{ color: highlightColor ?? "var(--color-light-blue)" }}
         >
           {title}
@@ -66,7 +66,9 @@ export function Blurb({
       )}
       <span
         className={cx(
-          "font-light text-white/80 leading-normal text-pretty",
+          // Right padding softens the rag. Kept on this auto-width span (not
+          // the w-full parent) because the site's elements are content-box.
+          "font-light text-white/80 leading-normal text-pretty pr-4 lg:pr-6",
           textClassName,
         )}
       >

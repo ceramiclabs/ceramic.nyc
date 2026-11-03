@@ -4,11 +4,8 @@ import { SectionNav } from "./components/section-nav"
 import { ChevronButton } from "./components/chevron-button"
 import { ArenaCaseStudy } from "./components/arena-case-study"
 import { RendevuCaseStudy } from "./components/rendevu-case-study"
-import {
-  ContactSection,
-  IntroSection,
-  ProductSection,
-} from "./components/sections"
+import { HeroSection } from "./components/hero-section"
+import { ContactSection, ProductSection } from "./components/sections"
 
 export function App() {
   return (
@@ -17,8 +14,8 @@ export function App() {
       <SectionNav />
       <ChevronButton />
       <main>
+        <HeroSection />
         <ProductSection />
-        <IntroSection />
         <ArenaCaseStudy />
         <RendevuCaseStudy />
         <ContactSection />

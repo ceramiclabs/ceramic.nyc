@@ -3,15 +3,13 @@ import { ArrowUpRight } from "lucide-react"
 import cx from "clsx"
 import { track } from "@amplitude/unified"
 import logoSvg from "../assets/ceramic-logo.svg"
+import { scrollToCaseStudies } from "../lib/scroll"
 import { Container } from "./container"
-
-function scrollToCaseStudies() {
-  document.getElementById("arena")?.scrollIntoView({ behavior: "smooth" })
-}
+import { BOOKING_URL } from "./cta"
 
 export function Header() {
   return (
-    <header className="fixed w-full top-0 left-0 z-[101] py-6">
+    <header className="fixed w-full top-0 left-0 z-101 py-6">
       <Container className="flex items-center justify-between">
         <div className="logo">
           <img src={logoSvg} alt="Logo" className="w-20 relative -top-1" />
@@ -49,8 +47,10 @@ export function Header() {
           </motion.a>
 
           <motion.a
-            href="mailto:hello@ceramic.nyc"
-            onClick={() => track("Contact Clicked")}
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => track("Intro Call Clicked", { location: "header" })}
             className={cx(
               "group flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs",
               "font-medium bg-white/5 backdrop-blur-xl border border-white/10",
