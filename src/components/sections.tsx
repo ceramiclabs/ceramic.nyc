@@ -6,7 +6,12 @@ import { Standfirst } from "../components/standfirst"
 import { Blurbs } from "./blurbs"
 import { SplitSection } from "./split-section"
 import { LineArt } from "./line-art"
-import { BookIntroCallButton, CONTACT_EMAIL, TextAction } from "./cta"
+import {
+  BookIntroCallButton,
+  CONTACT_EMAIL,
+  LinkedInButton,
+  TextAction,
+} from "./cta"
 import { Nowrap } from "./nowrap"
 
 export function ProductSection() {
@@ -53,7 +58,6 @@ export function IntroSection() {
   )
 }
 
-// TODO: add our LinkedIn URL here as a greyed-out LinkedIn logo link.
 export function ContactSection() {
   return (
     <SplitSection
@@ -80,6 +84,7 @@ export function ContactSection() {
           >
             {CONTACT_EMAIL}
           </TextAction>
+          <LinkedInButton location="contact" />
         </>
       }
     />

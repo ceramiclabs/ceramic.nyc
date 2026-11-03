@@ -1,4 +1,12 @@
-import { useEffect, useId, useRef, type ReactNode } from "react"
+import {
+  useEffect,
+  useId,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type ReactNode,
+  type RefObject,
+} from "react"
 import {
   animate,
   motion,
@@ -62,11 +70,19 @@ const toPath = (pts: Array<[number, number]>) =>
     .map(([x, y], i) => `${i ? "L" : "M"}${x.toFixed(1)} ${y.toFixed(1)}`)
     .join("")
 
-function ArtFrame({ mask, children }: { mask: string; children: ReactNode }) {
+function ArtFrame({
+  mask,
+  viewBox = `0 0 ${W} ${H}`,
+  children,
+}: {
+  mask: string
+  viewBox?: string
+  children: ReactNode
+}) {
   return (
     <svg
       aria-hidden
-      viewBox={`0 0 ${W} ${H}`}
+      viewBox={viewBox}
       preserveAspectRatio="xMidYMid slice"
       className="absolute inset-0 h-full w-full"
       style={{ maskImage: mask, WebkitMaskImage: mask }}
@@ -153,7 +169,10 @@ function capacitorPaths() {
       x = nx
       y = ny
       if (done || step % 3 === 0) pts.push([x, y])
-      if (done || x < -150 || x > W + 150 || y < -150 || y > H + 150) break
+      // Stop well past where the edge mask hides everything (it reaches
+      // ~960 × 750 units from the core), so wide screens never show an end.
+      const far = ((x - STACK_CX) / 1500) ** 2 + ((y - STACK_CY) / 1100) ** 2
+      if (done || far > 1) break
     }
     return toPath(pts)
   }
@@ -170,6 +189,54 @@ function capacitorPaths() {
 
 const CAPACITOR = capacitorPaths()
 
+// Visibility of the lines by distance from the core (mask luminance). Fully
+// hidden just around the plates, so their literal edges never show, then a
+// long ease-in so the lines dissolve into the dark rather than stopping at
+// the rim of a hole.
+const CORE_FADE: Array<[number, number]> = [
+  [0, 0],
+  [0.44, 0],
+  [0.56, 0.14],
+  [0.7, 0.45],
+  [0.85, 0.8],
+  [1, 1],
+]
+
+// The field scales with the viewport like a cover image up to this factor
+// (about a 2000px-wide screen), then stops, staying in proportion to the
+// headline, which stops growing at 2xl.
+const CAPACITOR_MAX_SCALE = 1.25
+
+function useSize(ref: RefObject<HTMLElement | null>) {
+  const [size, setSize] = useState<{ w: number; h: number } | null>(null)
+  useLayoutEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new ResizeObserver(([entry]) =>
+      setSize({ w: entry.contentRect.width, h: entry.contentRect.height }),
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [ref])
+  return size
+}
+
+/**
+ * Frame the field for a w × h box: the core sits behind the standfirst
+ * (68% across, or a fixed distance in from the content column on very wide
+ * screens, where the type has stopped growing), at capped scale. Below the
+ * cap this matches a plain `slice` of the 1600 × 1000 canvas exactly.
+ */
+function capacitorFrame(w: number, h: number) {
+  const s = Math.min(Math.max(w / W, h / H), CAPACITOR_MAX_SCALE)
+  const x = Math.min(w * 0.68, w * 0.1 + 1300)
+  const y = h * 0.5
+  return {
+    viewBox: [STACK_CX - x / s, STACK_CY - y / s, w / s, h / s].join(" "),
+    mask: `radial-gradient(ellipse ${960 * s}px ${750 * s}px at ${x}px ${y}px, #000 35%, transparent 100%)`,
+  }
+}
+
 /**
  * Hero: the field draws in on load, dissolving into the (unseen) electrode
  * stack, then lights up with a blue gradient centered on the core and stays
@@ -177,6 +244,8 @@ const CAPACITOR = capacitorPaths()
  */
 function CapacitorArt({ mask }: { mask: string }) {
   const ref = useRef<HTMLDivElement>(null)
+  const size = useSize(ref)
+  const frame = size && size.w > 0 ? capacitorFrame(size.w, size.h) : null
   const id = useId()
   const fadeId = `${id}-fade`
   const maskId = `${id}-mask`
@@ -208,7 +277,7 @@ function CapacitorArt({ mask }: { mask: string }) {
 
   return (
     <div ref={ref} className="absolute inset-0">
-      <ArtFrame mask={mask}>
+      <ArtFrame mask={frame?.mask ?? mask} viewBox={frame?.viewBox}>
         <defs>
           {/* Elliptical falloff around the stack: black (hidden) at the
               core, white (visible) beyond it. Stretched 3:1 horizontally. */}
@@ -217,26 +286,30 @@ function CapacitorArt({ mask }: { mask: string }) {
             gradientUnits="userSpaceOnUse"
             cx={STACK_CX}
             cy={STACK_CY}
-            r={600}
-            gradientTransform={`translate(${STACK_CX} ${STACK_CY}) scale(1 0.34) translate(${-STACK_CX} ${-STACK_CY})`}
+            r={950}
+            gradientTransform={`translate(${STACK_CX} ${STACK_CY}) scale(1 0.31) translate(${-STACK_CX} ${-STACK_CY})`}
           >
-            <stop offset="0" stopColor="#000" />
-            <stop offset="0.72" stopColor="#000" />
-            <stop offset="1" stopColor="#fff" />
+            {CORE_FADE.map(([offset, v]) => (
+              <stop
+                key={offset}
+                offset={offset}
+                stopColor={`rgb(${v * 255} ${v * 255} ${v * 255})`}
+              />
+            ))}
           </radialGradient>
           <mask
             id={maskId}
             maskUnits="userSpaceOnUse"
-            x={-300}
-            y={-300}
-            width={W + 600}
-            height={H + 600}
+            x={-1000}
+            y={-1000}
+            width={W + 2000}
+            height={H + 2000}
           >
             <rect
-              x={-300}
-              y={-300}
-              width={W + 600}
-              height={H + 600}
+              x={-1000}
+              y={-1000}
+              width={W + 2000}
+              height={H + 2000}
               fill={`url(#${fadeId})`}
             />
           </mask>
