@@ -5,15 +5,33 @@ import { Title } from "../components/title"
 import { Standfirst } from "../components/standfirst"
 import { Blurbs } from "./blurbs"
 import { SplitSection } from "./split-section"
-import { LineArt } from "./line-art"
+import { LineArt, type LineArtVariant } from "./line-art"
 import { BookIntroCallButton, CONTACT_EMAIL, TextAction } from "./cta"
 import { Nowrap } from "./nowrap"
+
+// TEMP: preview line-art options via ?art=<variant>
+const ART_OPTIONS: Array<LineArtVariant> = [
+  "contours",
+  "constellation",
+  "flow",
+  "flow2",
+  "amplify",
+  "converge",
+  "orbits",
+  "lens",
+  "ridges",
+  "signal",
+]
+function previewArt(): LineArtVariant {
+  const param = new URLSearchParams(window.location.search).get("art")
+  return ART_OPTIONS.find((o) => o === param) ?? "signal"
+}
 
 export function ProductSection() {
   return (
     <SplitSection
       id="product"
-      background={<LineArt variant="converge" />}
+      background={<LineArt variant={previewArt()} />}
       lines={[
         { text: "AI-native." },
         { text: "Product-forward." },
@@ -53,10 +71,12 @@ export function IntroSection() {
   )
 }
 
+// TODO: add our LinkedIn URL here as a greyed-out LinkedIn logo link.
 export function ContactSection() {
   return (
     <SplitSection
       id="contact"
+      background={<LineArt variant="phyllotaxis" />}
       lines={[
         { text: "We’re your" },
         { text: "force multiplier.", className: "blue" },
